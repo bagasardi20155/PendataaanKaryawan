@@ -20,7 +20,7 @@ import java.util.Scanner;
  */
 public class CariData extends Menu {
 
-    int menuChoice = 1;
+    int menuChoice = choice;
     Scanner input = new Scanner(System.in);
     
     boolean found = false;
@@ -32,7 +32,7 @@ public class CariData extends Menu {
     
     @Override
     void subMenu() {
-        System.out.println("1. Kembali ke Menu Utama");
+        System.out.println("\n1. Kembali ke Menu Utama");
     }
 
     @Override
@@ -41,7 +41,7 @@ public class CariData extends Menu {
         menuChoice = Integer.parseInt(input.nextLine());
     }
     
-    public void cariData(ArrayList<ArrayList<String>> dataKaryawan) throws ParseException {
+    public boolean cariData(ArrayList<ArrayList<String>> dataKaryawan) throws ParseException {
         System.out.print("Masukkan kode karyawan : ");
         String kodeKaryawan = input.nextLine();
         
@@ -52,9 +52,10 @@ public class CariData extends Menu {
                 found = true;
                 index = i;
             } else {
-                System.out.println("Data Karyawan tidak ditemukan");
+                found = false;
             }
-        }   
+        }
+        return found;
     }
     
     public void gaji() {
@@ -105,7 +106,7 @@ public class CariData extends Menu {
         gajiBersih = gajiKotor - potongan;
     }
     
-    public void showData(ArrayList<ArrayList<String>> dataKaryawan) throws ParseException {
+    public void showData(ArrayList<ArrayList<String>> dataKaryawan, int index) throws ParseException {
         
         String kodeKaryawan = dataKaryawan.get(index).get(0);
         String namaKaryawan = dataKaryawan.get(index).get(1);
@@ -131,6 +132,9 @@ public class CariData extends Menu {
         gaji();
         
         //tampilkan semua
+        System.out.println("\n================================");
+        System.out.println("    DATA PROFILE KARYAWAN");
+        System.out.println("--------------------------------");
         System.out.println("Kode Karyawan : " + kodeKaryawan);
         System.out.println("Nama Karyawan : " + namaKaryawan);
         System.out.println("Golongan : " + golongan);

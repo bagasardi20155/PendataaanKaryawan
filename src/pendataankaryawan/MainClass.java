@@ -31,7 +31,9 @@ public class MainClass {
         CariData cd = new CariData();
         
         while(true) {
-            System.out.println("Menu Data ArrayList");
+            System.out.println("\n===============================================");
+            System.out.println("    MENU UTAMA PROGRAM PENDATAAN KARYAWAN");
+            System.out.println("===============================================");
             td.menuUtama();
             
             System.out.print("\nMenu pilihan : ");
@@ -80,11 +82,18 @@ public class MainClass {
                 case 3:
                 OUTER:
                 while (true) {
-                    cd.cariData(dataKaryawan);
-                    cd.showData(dataKaryawan);
-                    
-                    cd.subMenu();
-                    cd.chooseSubMenu();
+                    boolean data = cd.cariData(dataKaryawan);
+                    if(data == false) {
+                        System.out.println("Data Karyawan Tidak Ditemukan");
+                        
+                        cd.subMenu();
+                        cd.chooseSubMenu();
+                    } else {
+                        cd.showData(dataKaryawan, cd.index);
+
+                        cd.subMenu();
+                        cd.chooseSubMenu();
+                    }
                     switch (cd.menuChoice) {
                         case 1:
                             break OUTER;
@@ -112,7 +121,7 @@ public class MainClass {
                     break;
 
                 case 5:
-                    System.out.println("Program telah berhenti");
+                    System.out.println("\nProgram telah berhenti");
                     System.exit(0);
                     break;
                 default:

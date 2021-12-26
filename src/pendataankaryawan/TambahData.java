@@ -16,14 +16,14 @@ import java.util.Scanner;
 public class TambahData extends Menu {
 
     String kodeKaryawan, namaKaryawan, alamat, tglLahir, golongan, jmlAnak, status;
-    int menuChoice = 1;
+    int menuChoice = choice;
     Scanner input = new Scanner(System.in);
     ArrayList<ArrayList<String>> dataKaryawan = new ArrayList<>();
 
     
     @Override
     void subMenu() {
-        System.out.println("1. Kembali ke Menu Utama");
+        System.out.println("\n1. Kembali ke Menu Utama");
         System.out.println("2. Tambah Data Kembali");
     }
 
@@ -39,16 +39,16 @@ public class TambahData extends Menu {
         System.out.print("\nMasukkan Kode Karyawan : ");
         kodeKaryawan = input.nextLine();
         
-        System.out.print("\nMasukkan Nama Karyawan : ");
+        System.out.print("Masukkan Nama Karyawan : ");
         namaKaryawan = input.nextLine();
         
-        System.out.print("\nMasukkan Alamat : ");
+        System.out.print("Masukkan Alamat : ");
         alamat = input.nextLine();
         
-        System.out.print("\nMasukkan Tanggal Lahir : ");
+        System.out.print("Masukkan Tanggal Lahir : ");
         tglLahir = input.nextLine();
         
-        System.out.print("\nMasukkan Golongan (A, B, C) : ");
+        System.out.print("Masukkan Golongan (A, B, C) : ");
         golongan = input.nextLine();
         switch(golongan) {
             case "A" :
@@ -62,14 +62,14 @@ public class TambahData extends Menu {
                 tambahData(dataKaryawan);
         }
         
-        System.out.print("\nMasukkan Status Menikah ( 0 jika belum, 1 jika sudah) : ");
+        System.out.print("Masukkan Status Menikah ( 0 jika belum, 1 jika sudah) : ");
         status = input.nextLine();
         if(Integer.parseInt(status) == 0) {
             dataKaryawan.add(new ArrayList<String>(
                 Arrays.asList(kodeKaryawan, namaKaryawan, alamat, tglLahir, golongan, "Belum Menikah")
             ));
         } else if(Integer.parseInt(status) == 1) {
-            System.out.print("\nMasukkan Jumlah Anak : ");
+            System.out.print("Masukkan Jumlah Anak : ");
             jmlAnak = input.nextLine();
             
             dataKaryawan.add(new ArrayList<String>(

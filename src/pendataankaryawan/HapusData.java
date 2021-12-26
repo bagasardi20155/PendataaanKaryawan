@@ -14,12 +14,12 @@ import java.util.Scanner;
  */
 public class HapusData extends Menu {
 
-    int menuChoice = 1;
+    int menuChoice = choice;
     Scanner input = new Scanner(System.in);
     
     @Override
     void subMenu() {
-        System.out.println("1. Kembali ke Menu Utama");
+        System.out.println("\n1. Kembali ke Menu Utama");
         System.out.println("2. Hapus Data Kembali");
     }
 
@@ -47,9 +47,9 @@ public class HapusData extends Menu {
         
         if(found == true) {
             dataKaryawan.remove(index);
-            System.out.println("Data Karyawan " + kodeKaryawan + " berhasil dihapus\n");
+            System.out.println("Data Karyawan " + kodeKaryawan + " berhasil dihapus");
         } else {
-            System.out.println("Data Karyawan tidak ditemukan\n");
+            System.out.println("Data Karyawan tidak ditemukan");
         }    
     }
 }
